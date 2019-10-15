@@ -7,9 +7,7 @@ import java.util.List;
 public interface CompositeTree {
 
     String getName();
-
-    void setId(int id);
-
+    
     int getId();
 
     void addChild(CompositeTree child);
@@ -23,5 +21,7 @@ public interface CompositeTree {
     CompositeTree getParent();
 
     void setParent(CompositeTree parent);
+
+    boolean hasChilds();
 
 }

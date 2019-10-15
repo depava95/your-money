@@ -1,13 +1,9 @@
-package com.biedin.core.interfaces;
-
-import com.biedin.core.implementation.OperationType;
-
-public interface Source {
-
-    String getName();
-
-    int getId();
-
-    OperationType getOperationType();
-
-}
+//package com.biedin.core.interfaces;
+//
+//import com.biedin.core.enums.OperationType;
+//
+//public interface Source extends CompositeTree {
+//
+//    OperationType getOperationType();
+//
+//}

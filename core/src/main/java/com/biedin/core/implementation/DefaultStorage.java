@@ -1,6 +1,6 @@
 package com.biedin.core.implementation;
 
-import com.biedin.core.abstracts.AbstractCompositeTree;
+import com.biedin.core.abstracts.AbstractTreeNode;
 import com.biedin.core.exceptions.AmountException;
 import com.biedin.core.exceptions.CurrencyException;
 import com.biedin.core.interfaces.Storage;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DefaultStorage extends AbstractCompositeTree implements Storage {
+public class DefaultStorage extends AbstractTreeNode implements Storage {
 
     private Map<Currency, BigDecimal> currencyAmounts = new HashMap<>();
     private List<Currency> availableCurrencies = new ArrayList<>();

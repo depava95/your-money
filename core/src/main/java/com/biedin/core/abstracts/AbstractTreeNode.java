@@ -7,38 +7,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class AbstractCompositeTree implements CompositeTree {
+public abstract class AbstractTreeNode implements CompositeTree {
 
     private int id;
     private List<CompositeTree> childs = new ArrayList<>();
     private CompositeTree parent;
     private String name;
 
-    public AbstractCompositeTree() {}
+    public AbstractTreeNode() {
+    }
 
-    public AbstractCompositeTree(int id, List<CompositeTree> childs, CompositeTree parent, String name) {
+    public AbstractTreeNode(int id, List<CompositeTree> childs, CompositeTree parent, String name) {
         this.id = id;
         this.childs = childs;
         this.parent = parent;
         this.name = name;
     }
 
-    public AbstractCompositeTree(int id, String name) {
+    public AbstractTreeNode(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public AbstractCompositeTree(String name) {
+    public AbstractTreeNode(String name) {
         this.name = name;
     }
 
-    @Override
     public void setId(int id) {
         if (id < 0) {
-            throw  new IllegalArgumentException("ID can't be negative");
+            throw new IllegalArgumentException("ID can't be negative");
         } else {
             this.id = id;
         }
+    }
+
+    @Override
+    public boolean hasChilds() {
+        return !childs.isEmpty();
     }
 
     @Override
@@ -64,7 +69,7 @@ public abstract class AbstractCompositeTree implements CompositeTree {
                 return child;
             }
         }
-        throw  new CompositeObjectNotExist("Child doesn't exist");
+        throw new CompositeObjectNotExist("Child doesn't exist");
     }
 
     @Override
@@ -95,7 +100,7 @@ public abstract class AbstractCompositeTree implements CompositeTree {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AbstractCompositeTree that = (AbstractCompositeTree) o;
+        AbstractTreeNode that = (AbstractTreeNode) o;
         return id == that.id;
     }
 

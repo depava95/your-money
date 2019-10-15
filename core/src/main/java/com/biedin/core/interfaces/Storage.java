@@ -8,11 +8,9 @@ import java.util.Currency;
 import java.util.List;
 import java.util.Map;
 
-public interface Storage {
+public interface Storage extends CompositeTree {
 
     //getters
-    String getName();
-
     BigDecimal getApproximatelyAmount(Currency currency);
 
     BigDecimal getAmount(Currency currency) throws CurrencyException;

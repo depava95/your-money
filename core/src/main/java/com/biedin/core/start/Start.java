@@ -1,31 +1,22 @@
 package com.biedin.core.start;
 
-import com.biedin.core.exceptions.CurrencyException;
-import com.biedin.core.implementation.DefaultStorage;
-import com.biedin.core.interfaces.Storage;
+import com.biedin.core.database.SQLiteConnection;
 
-import java.math.BigDecimal;
-import java.util.Currency;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Start {
     public static void main(String[] args) {
-        try {
-
-            Storage storage = new DefaultStorage();
-
-            Currency currencyUSD = Currency.getInstance("USD");
-            Currency currencyRUB = Currency.getInstance("RUB");
-            BigDecimal bigDecimal = new BigDecimal(100);
-            BigDecimal bigDecimal2 = new BigDecimal(101);
-
-            storage.addCurrency(currencyUSD);
-            storage.addAmount(bigDecimal, currencyUSD);
-            System.out.println(storage.getAmount(currencyUSD));
-            System.out.println(storage.getAvailableCurrencies());
-
-
-        } catch (CurrencyException e) {
-            e.printStackTrace();
-        }
+      try (Statement statement = SQLiteConnection.getConnection().createStatement();
+           ResultSet resultSet = statement.executeQuery("SELECT * FROM storage;")) {
+          while (resultSet.next()) {
+              System.out.print(resultSet.getString("name").concat(" "));
+              System.out.print(resultSet.getString("id").concat(" "));
+              System.out.println();
+          }
+      } catch (SQLException e) {
+          e.printStackTrace();
+      }
     }
 }
