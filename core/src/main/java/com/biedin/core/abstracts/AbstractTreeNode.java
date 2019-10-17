@@ -13,8 +13,7 @@ public abstract class AbstractTreeNode implements CompositeTree {
     private String name;
     private int parentId;
 
-    public AbstractTreeNode() {
-    }
+    public AbstractTreeNode() {}
 
     public AbstractTreeNode(String name) {
         this.name = name;
@@ -35,7 +34,6 @@ public abstract class AbstractTreeNode implements CompositeTree {
         this.parent = parent;
         this.name = name;
     }
-
 
     @Override
     public void addChild(CompositeTree child) {

@@ -10,23 +10,20 @@ import java.util.Map;
 
 public interface Storage extends CompositeTree {
 
-    //getters
-    BigDecimal getApproximatelyAmount(Currency currency);
+    Map<Currency, BigDecimal> getCurrencyAmounts();
 
     BigDecimal getAmount(Currency currency) throws CurrencyException;
 
-    Map<Currency, BigDecimal> getCurrencyAmounts();
+    BigDecimal getApproximatelyAmount(Currency currency);
 
-    //work with currencies
+    void updateAmount(BigDecimal amount, Currency currency) throws CurrencyException, AmountException;
+
+    Currency getCurrency(String currencyCode) throws CurrencyException;
+
     void addCurrency(Currency currency, BigDecimal initAmount) throws CurrencyException;
 
     void deleteCurrency(Currency currency) throws CurrencyException;
 
-    Currency getCurrency(String currencyCode) throws CurrencyException;
-
     List<Currency> getAvailableCurrencies();
-
-    //work with balances
-    void updateAmount(BigDecimal amount, Currency currency) throws CurrencyException, AmountException;
 
 }

@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -23,7 +23,7 @@ public class DefaultSourceDAO implements SourceDAO {
     private final String SOURCE_TABLE = "source";
 
     private List<Source> sourceList = new ArrayList<>();
-    private Map<OperationType, List<Source>> sourceMap = new HashMap<>();
+    private Map<OperationType, List<Source>> sourceMap = new EnumMap<>(OperationType.class);
     private TreeUtils<Source> treeUtils = new TreeUtils<>();
 
 
@@ -87,5 +87,10 @@ public class DefaultSourceDAO implements SourceDAO {
     @Override
     public boolean add(Source object) {
         return false;
+    }
+
+    @Override
+    public List<Source> getList(OperationType operationType) {
+        return null;
     }
 }

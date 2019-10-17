@@ -1,10 +1,10 @@
 package com.biedin.core.implementation.operations;
 
 import com.biedin.core.abstracts.AbstractOperation;
+import com.biedin.core.enums.OperationType;
 import com.biedin.core.interfaces.Storage;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.Currency;
 
 public class TransferOperation extends AbstractOperation {
@@ -14,27 +14,8 @@ public class TransferOperation extends AbstractOperation {
     private Currency currency;
     private BigDecimal amount;
 
-    public TransferOperation(Storage fromStorage, Storage toStorage, Currency currency, BigDecimal amount) {
-        this.fromStorage = fromStorage;
-        this.toStorage = toStorage;
-        this.currency = currency;
-        this.amount = amount;
-    }
-
-    public TransferOperation(int id, Calendar dateTime, String extraInfo, Storage fromStorage, Storage toStorage, Currency currency, BigDecimal amount) {
-        super(id, dateTime, extraInfo);
-        this.fromStorage = fromStorage;
-        this.toStorage = toStorage;
-        this.currency = currency;
-        this.amount = amount;
-    }
-
-    public TransferOperation(int id, Storage fromStorage, Storage toStorage, Currency currency, BigDecimal amount) {
-        super(id);
-        this.fromStorage = fromStorage;
-        this.toStorage = toStorage;
-        this.currency = currency;
-        this.amount = amount;
+    public TransferOperation() {
+        super(OperationType.TRANSFER);
     }
 
     public Storage getFromStorage() {

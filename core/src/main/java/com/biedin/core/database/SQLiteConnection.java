@@ -15,8 +15,10 @@ public class SQLiteConnection {
             String url = "jdbc:sqlite:C:\\Users\\depav\\Desktop\\full db\\money.db";
             if (con == null) {
                 con = DriverManager.getConnection(url);
-                return con;
             }
+            con.createStatement().execute("PRAGMA foreign_keys = ON");
+            con.createStatement().execute("PRAGMA encoding = \"UTF-8\"");
+            return con;
         } catch (SQLException e) {
             Logger.getLogger(SQLiteConnection.class.getName()).log(Level.SEVERE, null, e);
         }

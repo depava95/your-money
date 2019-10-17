@@ -17,8 +17,7 @@ public class DefaultStorage extends AbstractTreeNode implements Storage {
     private Map<Currency, BigDecimal> currencyAmounts = new HashMap<>();
     private List<Currency> currencyList = new ArrayList<>();
 
-    public DefaultStorage() {
-    }
+    public DefaultStorage() {}
 
     public DefaultStorage(String name) {
         super(name);

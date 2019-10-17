@@ -1,23 +1,30 @@
 package com.biedin.core.abstracts;
 
+import com.biedin.core.enums.OperationType;
+import com.biedin.core.interfaces.Operation;
+
 import java.util.Calendar;
 
-public abstract class AbstractOperation {
+public abstract class AbstractOperation implements Operation {
 
     private int id;
     private Calendar dateTime;
-    private String extraInfo;
+    private String description;
+    private OperationType operationType;
 
-    public AbstractOperation(){}
-
-    public AbstractOperation(int id, Calendar dateTime, String extraInfo) {
-        this.id = id;
-        this.dateTime = dateTime;
-        this.extraInfo = extraInfo;
+    public AbstractOperation(OperationType operationType) {
+        this.operationType = operationType;
     }
 
-    public AbstractOperation(int id) {
+    public AbstractOperation(int id, Calendar dateTime, String description) {
         this.id = id;
+        this.description = description;
+        this.dateTime = dateTime;
+    }
+
+    public AbstractOperation(int id, OperationType operationType) {
+        this.id = id;
+        this.operationType = operationType;
     }
 
     public int getId() {
@@ -36,11 +43,26 @@ public abstract class AbstractOperation {
         this.dateTime = dateTime;
     }
 
-    public String getExtraInfo() {
-        return extraInfo;
+    public String getDescription() {
+        return description;
     }
 
-    public void setExtraInfo(String extraInfo) {
-        this.extraInfo = extraInfo;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    @Override
+    public OperationType getOperationType() {
+        return operationType;
+    }
+
+    public void setOperationType(OperationType operationType) {
+        this.operationType = operationType;
+    }
+
+    @Override
+    public int compareTo(Operation operation) {
+        return operation.getDateTime().compareTo(dateTime);
+    }
+
 }

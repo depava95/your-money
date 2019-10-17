@@ -11,8 +11,7 @@ public class DefaultSource extends AbstractTreeNode implements Source {
 
     OperationType operationType;
 
-    public DefaultSource() {
-    }
+    public DefaultSource() {}
 
     public DefaultSource(String name) {
         super(name);

@@ -1,13 +1,13 @@
 package com.biedin.core.implementation.operations;
 
 import com.biedin.core.abstracts.AbstractOperation;
+import com.biedin.core.enums.OperationType;
 import com.biedin.core.interfaces.Storage;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.Currency;
 
-public class ConversionOperation extends AbstractOperation {
+public class ConvertOperation extends AbstractOperation {
 
     private Storage fromStorage;
     private Storage toStorage;
@@ -16,33 +16,8 @@ public class ConversionOperation extends AbstractOperation {
     private BigDecimal fromAmount;
     private BigDecimal toAmount;
 
-    public ConversionOperation(Storage fromStorage, Storage toStorage, Currency fromCurrency, Currency toCurrency, BigDecimal fromAmount, BigDecimal toAmount) {
-        this.fromStorage = fromStorage;
-        this.toStorage = toStorage;
-        this.fromCurrency = fromCurrency;
-        this.toCurrency = toCurrency;
-        this.fromAmount = fromAmount;
-        this.toAmount = toAmount;
-    }
-
-    public ConversionOperation(int id, Calendar dateTime, String extraInfo, Storage fromStorage, Storage toStorage, Currency fromCurrency, Currency toCurrency, BigDecimal fromAmount, BigDecimal toAmount) {
-        super(id, dateTime, extraInfo);
-        this.fromStorage = fromStorage;
-        this.toStorage = toStorage;
-        this.fromCurrency = fromCurrency;
-        this.toCurrency = toCurrency;
-        this.fromAmount = fromAmount;
-        this.toAmount = toAmount;
-    }
-
-    public ConversionOperation(int id, Storage fromStorage, Storage toStorage, Currency fromCurrency, Currency toCurrency, BigDecimal fromAmount, BigDecimal toAmount) {
-        super(id);
-        this.fromStorage = fromStorage;
-        this.toStorage = toStorage;
-        this.fromCurrency = fromCurrency;
-        this.toCurrency = toCurrency;
-        this.fromAmount = fromAmount;
-        this.toAmount = toAmount;
+    public ConvertOperation() {
+        super(OperationType.CONVERT);
     }
 
     public Storage getFromStorage() {
