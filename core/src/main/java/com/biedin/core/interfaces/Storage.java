@@ -18,19 +18,15 @@ public interface Storage extends CompositeTree {
     Map<Currency, BigDecimal> getCurrencyAmounts();
 
     //work with currencies
-    void addCurrency(Currency currency) throws CurrencyException;
+    void addCurrency(Currency currency, BigDecimal initAmount) throws CurrencyException;
 
     void deleteCurrency(Currency currency) throws CurrencyException;
 
-    Currency getCurrency(String currencyCode);
+    Currency getCurrency(String currencyCode) throws CurrencyException;
 
     List<Currency> getAvailableCurrencies();
 
     //work with balances
-    void addAmount(BigDecimal amount, Currency currency) throws CurrencyException;
-
-    void expenseAmount(BigDecimal amount, Currency currency) throws CurrencyException, AmountException;
-
-    void changeAmount(BigDecimal amount, Currency currency) throws CurrencyException;
+    void updateAmount(BigDecimal amount, Currency currency) throws CurrencyException, AmountException;
 
 }

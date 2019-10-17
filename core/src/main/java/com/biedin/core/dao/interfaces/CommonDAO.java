@@ -8,8 +8,10 @@ public interface CommonDAO<T> {
 
     T get(int id);
 
-    boolean update(T storage);
+    boolean update(T object);
 
-    boolean delete(T storage);
+    boolean delete(T object);
+
+    boolean add(T object);
 
 }

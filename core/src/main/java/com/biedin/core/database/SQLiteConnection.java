@@ -12,7 +12,7 @@ public class SQLiteConnection {
 
     public static Connection getConnection() {
         try {
-            String url = "jdbc:sqlite:C:\\Users\\depav\\Desktop\\money.db";
+            String url = "jdbc:sqlite:C:\\Users\\depav\\Desktop\\full db\\money.db";
             if (con == null) {
                 con = DriverManager.getConnection(url);
                 return con;

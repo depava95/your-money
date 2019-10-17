@@ -1,22 +1,23 @@
 package com.biedin.core.start;
 
-import com.biedin.core.database.SQLiteConnection;
+import com.biedin.core.dao.implementation.DefaultStorageDAO;
+import com.biedin.core.decorator.StorageSync;
+import com.biedin.core.exceptions.CurrencyException;
+import com.biedin.core.implementation.DefaultStorage;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.math.BigDecimal;
+import java.util.Currency;
 
 public class Start {
     public static void main(String[] args) {
-      try (Statement statement = SQLiteConnection.getConnection().createStatement();
-           ResultSet resultSet = statement.executeQuery("SELECT * FROM storage;")) {
-          while (resultSet.next()) {
-              System.out.print(resultSet.getString("name").concat(" "));
-              System.out.print(resultSet.getString("id").concat(" "));
-              System.out.println();
-          }
-      } catch (SQLException e) {
-          e.printStackTrace();
-      }
+        StorageSync storageSync = new StorageSync(new DefaultStorageDAO());
+        DefaultStorage defaultStorage = (DefaultStorage) storageSync.getAll().get(2);
+        try {
+            storageSync.addCurrency(defaultStorage, Currency.getInstance("USD"), new BigDecimal(100));
+            System.out.println(storageSync.getAll());
+        } catch (CurrencyException e) {
+            e.printStackTrace();
+        }
     }
+    //TODO Something changes;
 }
